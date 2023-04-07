@@ -16,7 +16,9 @@ public class CSVReader {
 
         //ler até o fim do arquivo
         while((linha = br.readLine()) != null){
-            System.out.println(linha);
+            //slit em cada virgula
+            String[] values = linha.split(",");
+            System.out.println(values[0]);
         }
     }
 }
