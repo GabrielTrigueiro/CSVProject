@@ -13,7 +13,18 @@ public class CSVReader {
         TrocarIds transformers = new TrocarIds();
         String arquivo1 = "C:/Users/gabri/OneDrive/Documentos/Trabalho/ProjetoCSV/src/data.csv";
         String arquivo2 = "C:/Users/gabri/OneDrive/Documentos/Trabalho/ProjetoCSV/src/stations.csv";
+
         transformers.substituirIDs(arquivo1, arquivo2);
+
+        long tempoFinal = System.currentTimeMillis();
+        double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
+        System.out.println("Tempo de execução: " + tempoExecucaoSegundos + " segundos");
+    }
+
+    public static void segundaTransformacao(){
+        long tempoInicial = System.currentTimeMillis();
+
+
 
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
