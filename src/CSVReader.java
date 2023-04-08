@@ -7,18 +7,14 @@ import java.io.IOException;
 public class CSVReader {
     public static void main(String[] args) throws IOException {
 
-        //path do arquivo
-        String path = "C:/Users/gabri/OneDrive/Documentos/Trabalho/ProjetoCSV/src/names.csv";
-        //storage
-        String linha = "";
-        //leitor de linhas
-        BufferedReader br = new BufferedReader(new FileReader(path));
+      TransformarCSV transformers = new TransformarCSV();
+      String arquivo1 = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/dados.csv";
+      String arquivo2 = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/stations.csv";
 
-        //ler até o fim do arquivo
-        while((linha = br.readLine()) != null){
-            //slit em cada virgula
-            String[] values = linha.split(",");
-            System.out.println(values[0]);
-        }
+      transformers.substituirIDs(arquivo1, arquivo2);
+
+
+
     }
+
 }
