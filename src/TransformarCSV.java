@@ -81,9 +81,11 @@ public class TransformarCSV {
                 }
                 writer.write(System.lineSeparator());
             }
+            System.out.println("Transformação finalizada");
             writer.close();
 
         } catch (IOException e) {
+            System.out.println("Erro: " + e.toString());
         }
     }
 

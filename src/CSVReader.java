@@ -7,14 +7,17 @@ import java.io.IOException;
 public class CSVReader {
     public static void main(String[] args) throws IOException {
 
-      TransformarCSV transformers = new TransformarCSV();
-      String arquivo1 = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/dados.csv";
-      String arquivo2 = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/stations.csv";
+        //marcar tempo de execução
+        long tempoInicial = System.currentTimeMillis();
 
-      transformers.substituirIDs(arquivo1, arquivo2);
+        TransformarCSV transformers = new TransformarCSV();
+        String arquivo1 = "C:/Users/gabri/OneDrive/Documentos/Trabalho/ProjetoCSV/src/data.csv";
+        String arquivo2 = "C:/Users/gabri/OneDrive/Documentos/Trabalho/ProjetoCSV/src/stations.csv";
+        transformers.substituirIDs(arquivo1, arquivo2);
 
-
-
+        long tempoFinal = System.currentTimeMillis();
+        double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
+        System.out.println("Tempo de execução: " + tempoExecucaoSegundos + " segundos");
     }
 
 }
