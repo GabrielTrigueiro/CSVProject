@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class TransformarCSV {
+public class TrocarIds {
     //lê a quantidade de linhas do arquivo
     public static int contarLinhas(String caminhoArquivo) {
         int linhas = 0;
