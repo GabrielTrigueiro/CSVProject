@@ -6,8 +6,7 @@ public class CSVReader {
     public static void main(String[] args) throws IOException {
 
         primeiraTransoformacao();
-
-        //segundaTransformacao();
+        segundaTransformacao();
 
     }
     public static void primeiraTransoformacao(){
@@ -22,7 +21,7 @@ public class CSVReader {
 
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
-        System.out.println("Tempo de execução: " + tempoExecucaoSegundos + " segundos");
+        System.out.println("Tempo da primeira execução: " + tempoExecucaoSegundos + " segundos");
     }
 
     public static void segundaTransformacao() throws IOException {
@@ -34,6 +33,6 @@ public class CSVReader {
 
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
-        System.out.println("Tempo de execução: " + tempoExecucaoSegundos + " segundos");
+        System.out.println("Tempo da segunda execução: " + tempoExecucaoSegundos + " segundos");
     }
 }

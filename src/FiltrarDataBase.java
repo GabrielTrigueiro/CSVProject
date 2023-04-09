@@ -15,7 +15,7 @@ public class FiltrarDataBase {
             int linhas = 0;
             int colunas = 0;
             while ((linha = br.readLine()) != null) {
-                String[] valores = linha.split(" ");
+                String[] valores = linha.split(",");
                 if (dados == null) {
                     colunas = valores.length;
                     dados = new String[TrocarIds.contarLinhas(caminhoArquivo)][colunas];
@@ -40,15 +40,37 @@ public class FiltrarDataBase {
         String value = "Pasadena";
 
         for (int i = 1; i < dataBruta.length; i++) {
-            for (int j = 0; j < dataBruta[i].length; j++) {
-                if(Objects.equals(dataBruta[i][9], value) | Objects.equals(dataBruta[i][10], value)){
-                    for (int k = 0; k < dataBruta[i].length; k++) {
-                        writer.write(dataBruta[i][k] + " ");
+
+                boolean possui = false;
+                String[] index1 = quebrarIndex(dataBruta[i][9]);
+                String[] index2 = quebrarIndex(dataBruta[i][10]);
+
+                for (String palavra: index1) {
+                    if(palavra.equals(value)){
+                        possui = true;
+                        break;
                     }
                 }
-                writer.write(System.lineSeparator());
-            }
+
+                for (String palavra: index2) {
+                    if(palavra.equals(value)){
+                        possui = true;
+                        break;
+                    }
+                }
+
+                if(possui) {
+                    for (int j = 0; j < dataBruta[i].length-1; j++) {
+                        writer.write(dataBruta[i][j] + ",");
+                    }
+                    writer.write(dataBruta[i][dataBruta[i].length-1]);
+                    writer.write(System.lineSeparator());
+                }
         }
         writer.close();
     }
+    public static String[] quebrarIndex(String index){
+        return index.split(" ");
+    }
 }
+
