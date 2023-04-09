@@ -77,7 +77,7 @@ public class TrocarIds {
 
             for (int i = 0; i < dados1.length; i++) {
                 for (int j = 0; j < dados1[i].length; j++) {
-                    writer.write(dados1[i][j] + " ");
+                    writer.write(dados1[i][j] + ",");
                 }
                 writer.write(System.lineSeparator());
             }

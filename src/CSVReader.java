@@ -4,7 +4,11 @@ import java.io.IOException;
 // then press Enter. You can now see whitespace characters in your code.
 public class CSVReader {
     public static void main(String[] args) throws IOException {
+
         primeiraTransoformacao();
+
+        //segundaTransformacao();
+
     }
     public static void primeiraTransoformacao(){
         //marcar tempo de execução
@@ -21,10 +25,12 @@ public class CSVReader {
         System.out.println("Tempo de execução: " + tempoExecucaoSegundos + " segundos");
     }
 
-    public static void segundaTransformacao(){
+    public static void segundaTransformacao() throws IOException {
         long tempoInicial = System.currentTimeMillis();
 
-
+        String arquivoBrutoPath = "C:/Users/gabri/OneDrive/Documentos/Trabalho/ProjetoCSV/LAMetroTrips.csv";
+        FiltrarDataBase filtro = new FiltrarDataBase();
+        filtro.filtrarData(arquivoBrutoPath);
 
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
