@@ -81,7 +81,6 @@ public class TrocarIds {
                 }
                 writer.write(System.lineSeparator());
             }
-            System.out.println("Transformação finalizada");
             writer.close();
 
         } catch (IOException e) {
