@@ -7,35 +7,12 @@ import java.util.Objects;
 public class FiltrarDataBase {
 
     //lê o aquivo csv e armazena os dados
-    public static String[][] lerCSVNovo(String caminhoArquivo) {
-        String[][] dados = null;
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo));
-            String linha;
-            int linhas = 0;
-            int colunas = 0;
-            while ((linha = br.readLine()) != null) {
-                String[] valores = linha.split(",");
-                if (dados == null) {
-                    colunas = valores.length;
-                    dados = new String[TrocarIds.contarLinhas(caminhoArquivo)][colunas];
-                }
-                for (int i = 0; i < valores.length; i++) {
-                    dados[linhas][i] = valores[i];
-                }
-                linhas++;
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return dados;
-    }
+
 
     public static void filtrarData(String urlArquivo) throws IOException {
 
         FileWriter writer = new FileWriter("LAMetroTrips_F1.csv");
-        String[][] dataBruta = lerCSVNovo(urlArquivo);
+        String[][] dataBruta = FuncoesDeArquivo.lerCSVNovo(urlArquivo);
 
         String value = "Pasadena";
 
