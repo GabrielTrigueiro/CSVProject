@@ -5,7 +5,7 @@ public class EstacoesEmOrdemAlfabetica {
     public static void bubbleSort(String urlArquivo) throws IOException {
 
         String arquivoEntrada = urlArquivo;
-        String arquivoSaida = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTripsTESTEBUBBLE.csv";
+        String arquivoSaida = "LAMetroTripsTESTEBUBBLE.csv";
 
 
         try {
@@ -18,7 +18,7 @@ public class EstacoesEmOrdemAlfabetica {
             escritor.newLine();
 
             // Lê as demais linhas e as armazena em um array de strings
-            String[] linhas = new String[FuncoesDeArquivo.contarLinhas("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv")]; // assume que não haverá mais de 1000 linhas
+            String[] linhas = new String[FuncoesDeArquivo.contarLinhas("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv")];
             int numLinhas = 0;
             while ((linha = leitor.readLine()) != null) {
                 linhas[numLinhas] = linha;

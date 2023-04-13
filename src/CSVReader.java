@@ -5,15 +5,14 @@ import java.io.*;
 public class CSVReader {
     public static void main(String[] args) throws IOException {
 
-        //primeiraTransoformacao();
-        //segundaTransformacao();
-        EstacoesEmOrdemAlfabetica.bubbleSort("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv");
+       // primeiraTransoformacao();
+       // segundaTransformacao();
+        EstacoesEmOrdemAlfabetica teste = new EstacoesEmOrdemAlfabetica();
+        teste.bubbleSort("LAMetroTrips.csv");
 
 
 
     }
-
-
 
     public static void primeiraTransoformacao(){
         //marcar tempo de execução
