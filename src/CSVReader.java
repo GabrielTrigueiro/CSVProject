@@ -8,7 +8,7 @@ public class CSVReader {
        // primeiraTransoformacao();
        // segundaTransformacao();
         EstacoesEmOrdemAlfabetica teste = new EstacoesEmOrdemAlfabetica();
-        teste.bubbleSort("LAMetroTrips.csv");
+        teste.bubbleSort("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv");
 
 
 

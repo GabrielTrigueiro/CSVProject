@@ -3,10 +3,9 @@ import java.io.*;
 
 public class EstacoesEmOrdemAlfabetica {
     public static void bubbleSort(String urlArquivo) throws IOException {
-
-        String arquivoEntrada = urlArquivo;
-        String arquivoSaida = "LAMetroTripsTESTEBUBBLE.csv";
-
+        String arquivoEntrada = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv";
+        String arquivoSaida = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTripsBubbleSort.csv";
+        String separador = ",";
 
         try {
             BufferedReader leitor = new BufferedReader(new FileReader(arquivoEntrada));
@@ -17,37 +16,36 @@ public class EstacoesEmOrdemAlfabetica {
             escritor.write(linha);
             escritor.newLine();
 
-            // Lê as demais linhas e as armazena em um array de strings
-            String[] linhas = new String[FuncoesDeArquivo.contarLinhas("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv")];
-            int numLinhas = 0;
-            while ((linha = leitor.readLine()) != null) {
-                linhas[numLinhas] = linha;
-                numLinhas++;
-            }
+            // Lê as demais linhas e as armazena em um array bidimensional
+            String[][] dados = FuncoesDeArquivo.lerCSVNovo(arquivoEntrada);
+            int numLinhas = FuncoesDeArquivo.contarLinhas(arquivoEntrada);
 
-            // Ordena o array de linhas pelo nome da estacao usando bubblesort
+            // Ordena o array bidimensional pelo nome do cliente usando bubblesort
             boolean trocou = true;
             while (trocou) {
                 trocou = false;
                 for (int i = 1; i < numLinhas - 1; i++) {
-                    String[] dados1 = linhas[i].split(",");
-                    String[] dados2 = linhas[i + 1].split(",");
-                    String nome1 = dados1[9].trim(); // índice 9 = nome da estacao
-                    String nome2 = dados2[9].trim();
+                    String nome1 = dados[i][9]; // índice 4 = nome do cliente
+                    String nome2 = dados[i+1][9];
 
                     if (nome1.compareToIgnoreCase(nome2) > 0) {
                         // troca as linhas de posição
-                        String temp = linhas[i];
-                        linhas[i] = linhas[i + 1];
-                        linhas[i + 1] = temp;
+                        String[] temp = dados[i];
+                        dados[i] = dados[i+1];
+                        dados[i+1] = temp;
                         trocou = true;
                     }
                 }
             }
 
             // Escreve as linhas ordenadas no arquivo de saída
-            for (int i = 0; i < numLinhas; i++) {
-                escritor.write(linhas[i]);
+            for (int i = 1; i < numLinhas; i++) {
+                StringBuilder linhaOrdenada = new StringBuilder();
+                for (int j = 0; j < dados.length; j++) {
+                    linhaOrdenada.append(dados[i][j]).append(separador);
+                }
+                linhaOrdenada.deleteCharAt(linhaOrdenada.length()-1); // remove o último separador
+                escritor.write(linhaOrdenada.toString());
                 escritor.newLine();
             }
 
@@ -57,6 +55,6 @@ public class EstacoesEmOrdemAlfabetica {
         } catch (IOException e) {
             System.out.println("Erro ao manipular o arquivo: " + e.getMessage());
         }
-
     }
 }
+
