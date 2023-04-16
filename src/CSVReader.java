@@ -1,3 +1,6 @@
+import transformacoes.FiltrarDataBase;
+import transformacoes.TrocarIds;
+
 import java.io.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
