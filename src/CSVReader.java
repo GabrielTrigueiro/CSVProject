@@ -1,6 +1,7 @@
 import transformacoes.FiltrarDataBase;
 import transformacoes.MediaGeral;
 import transformacoes.TrocarIds;
+import transformacoes.MergeSort_Duration;
 
 import java.io.*;
 
@@ -8,7 +9,15 @@ import java.io.*;
 // then press Enter. You can now see whitespace characters in your code.
 public class CSVReader {
     public static void main(String[] args) {
-        execTransf();
+        //execTransf();
+        mergeSortMedioCaso();
+
+    }
+
+    public static void mergeSortMedioCaso(){
+        MergeSort_Duration mergeSortTeste = new MergeSort_Duration();
+        mergeSortTeste.mergeSort_Duration("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv");
+
     }
 
     public static void execTransf(){
@@ -17,10 +26,10 @@ public class CSVReader {
         long tempoInicial = System.currentTimeMillis();
 
         //pegar o caminho dos dois arquivos base
-        File fileData = new File("dataBase.csv");
+        File fileData = new File("dados.csv");
         String urlData = fileData.getAbsolutePath();
 
-        File fileStation = new File("dataStations.csv");
+        File fileStation = new File("stations.csv");
         String urlStations = fileStation.getAbsolutePath();
 
         //executar primeira transformação
