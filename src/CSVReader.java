@@ -5,39 +5,44 @@ import java.io.*;
 public class CSVReader {
     public static void main(String[] args) throws IOException {
 
-       // primeiraTransoformacao();
-       // segundaTransformacao();
-        EstacoesEmOrdemAlfabetica teste = new EstacoesEmOrdemAlfabetica();
-        teste.bubbleSort("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv");
-
-
-
     }
 
-    public static void primeiraTransoformacao(){
-        //marcar tempo de execução
+    public static void execTransf(){
+
+        //iniciar contagem do tempo
         long tempoInicial = System.currentTimeMillis();
 
-        TrocarIds transformers = new TrocarIds();
-        String arquivo1 = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/dados.csv";
-        String arquivo2 = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/stations.csv";
+        //pegar o caminho dos dois arquivos base
+        File fileData = new File("dataBase.csv");
+        String urlData = fileData.getAbsolutePath();
 
-        transformers.substituirIDs(arquivo1, arquivo2);
+        File fileStation = new File("dataStations.csv");
+        String urlStations = fileStation.getAbsolutePath();
 
-        long tempoFinal = System.currentTimeMillis();
-        double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
-        System.out.println("Tempo da primeira execução: " + tempoExecucaoSegundos + " segundos");
-    }
+        //executar primeira transformação
+        firstTransf(urlData, urlStations);
 
-    public static void segundaTransformacao() throws IOException {
-        long tempoInicial = System.currentTimeMillis();
+        //encontrar path do arquivo gerado
+        File fileLAMetro = new File("LAMetroTrips.csv");
+        String urlLAMetro = fileLAMetro.getAbsolutePath();
 
-        String arquivoBrutoPath = "C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv";
-        FiltrarDataBase filtro = new FiltrarDataBase();
-        filtro.filtrarData(arquivoBrutoPath);
+        //executar segunda transformação
+        secondTransf(urlLAMetro);
 
+        //finalizar e mostrar duração da execução
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
         System.out.println("Tempo da segunda execução: " + tempoExecucaoSegundos + " segundos");
+    }
+
+    public static void firstTransf(String arquivo1, String arquivo2){
+        TrocarIds transformers = new TrocarIds();
+        transformers.substituirIDs(arquivo1, arquivo2);
+
+    }
+
+    public static void secondTransf(String arquivo){
+        FiltrarDataBase filtro = new FiltrarDataBase();
+        filtro.filtrarData(arquivo);
     }
 }
