@@ -1,4 +1,5 @@
 import transformacoes.FiltrarDataBase;
+import transformacoes.MediaGeral;
 import transformacoes.TrocarIds;
 
 import java.io.*;
@@ -31,6 +32,9 @@ public class CSVReader {
 
         //executar segunda transformação
         secondTransf(urlLAMetro);
+
+        //executar terceira transformação
+        MediaGeral.realizarFiltro(urlLAMetro);
 
         //finalizar e mostrar duração da execução
         long tempoFinal = System.currentTimeMillis();
