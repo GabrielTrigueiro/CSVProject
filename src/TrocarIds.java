@@ -36,9 +36,10 @@ public class TrocarIds {
             FileWriter writer = new FileWriter("LAMetroTrips.csv");
 
             for (int i = 0; i < dados1.length; i++) {
-                for (int j = 0; j < dados1[i].length; j++) {
+                for (int j = 0; j < dados1[i].length-1; j++) {
                     writer.write(dados1[i][j] + ",");
                 }
+                writer.write(dados1[i][dados1[i].length-1]);
                 writer.write(System.lineSeparator());
             }
             writer.close();
