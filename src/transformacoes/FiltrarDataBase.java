@@ -3,7 +3,7 @@ package transformacoes;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FiltrarDataBase {
+public class    FiltrarDataBase {
 
     public static void filtrarData(String urlArquivo){
 

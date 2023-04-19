@@ -2,6 +2,7 @@ import transformacoes.FiltrarDataBase;
 import transformacoes.MediaGeral;
 import transformacoes.TrocarIds;
 import transformacoes.MergeSort_Duration;
+import transformacoes.InsertionSort_Duration;
 
 import java.io.*;
 
@@ -10,8 +11,16 @@ import java.io.*;
 public class CSVReader {
     public static void main(String[] args) {
         //execTransf();
-        mergeSortMedioCaso();
+        //mergeSortMedioCaso();
+        insertionSort();
+        //firstTransf("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/dados.csv","C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/stations.csv" );
 
+
+    }
+
+    public static void insertionSort(){
+        InsertionSort_Duration insertionSortTeste = new InsertionSort_Duration();
+        insertionSortTeste.insertionSort_Duration_method("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv");
     }
 
     public static void mergeSortMedioCaso(){

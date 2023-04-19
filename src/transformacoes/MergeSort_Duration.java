@@ -10,8 +10,7 @@ public class MergeSort_Duration {
     public static void mergeSort_Duration(String url) {
 
         String arquivoEntrada = url;
-        String arquivoSaida = "LAMetroTrips_duration_insertionSort_medioCaso.csv";
-        String separador = ",";
+        String arquivoSaida = "LAMetroTrips_duration_mergeSort_medioCaso.csv";
         FuncoesDeArquivo funcoes = new FuncoesDeArquivo();
 
         try {
@@ -23,7 +22,7 @@ public class MergeSort_Duration {
             int numLinhas = funcoes.contarLinhas(url);
 
 
-            // Ordena o array de dataBruta pelo duration usando mergesort
+            // Ordena o array de dataBruta pelo campo duration usando mergesort
             mergesort(dataBruta, 1, numLinhas - 1, 1); // índice 1 = duration
 
             // Escreve as dataBruta ordenadas no arquivo de saída
