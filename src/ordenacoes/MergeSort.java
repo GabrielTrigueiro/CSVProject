@@ -1,13 +1,20 @@
-package transformacoes;
+package ordenacoes;
+import transformacoes.FuncoesDeArquivo;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class MergeSort_Duration {
+public class MergeSort {
 
-    public static void mergeSort_Duration(String url) {
+    public static void allCasesDuration(String medio){
+        int index = 1;
+        mergeSort_Duration(medio, index);
+    }
+
+    public static void mergeSort_Duration(String url, int index) {
 
         String arquivoEntrada = url;
         String arquivoSaida = "LAMetroTrips_duration_mergeSort_medioCaso.csv";
@@ -17,13 +24,12 @@ public class MergeSort_Duration {
             BufferedReader leitor = new BufferedReader(new FileReader(arquivoEntrada));
             BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida));
 
-
             String[][] dataBruta = FuncoesDeArquivo.lerCSVNovo(url);
             int numLinhas = funcoes.contarLinhas(url);
 
 
             // Ordena o array de dataBruta pelo campo duration usando mergesort
-            mergesort(dataBruta, 1, numLinhas - 1, 1); // índice 1 = duration
+            mergesort(dataBruta, 1, numLinhas - 1, index); // índice 1 = duration
 
             // Escreve as dataBruta ordenadas no arquivo de saída
             for (int i = 0; i < dataBruta.length; i++) {
@@ -42,9 +48,6 @@ public class MergeSort_Duration {
         }
     }
 
-
-
-    // Implementação do algoritmo de Merge Sort para ordenação pelo campo "duration"
     private static void mergesort(String[][] a, int esq, int dir, int coluna) {
         if (esq < dir) {
             int meio = (esq + dir) / 2;

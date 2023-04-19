@@ -1,10 +1,37 @@
 package transformacoes;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class FuncoesDeArquivo {
+
+    public static void execTransf(){
+
+        long tempoInicial = System.currentTimeMillis();
+
+        File fileData = new File("data.csv");
+        String urlData = fileData.getAbsolutePath();
+        File fileStation = new File("stations.csv");
+        String urlStations = fileStation.getAbsolutePath();
+
+        //1º
+        TrocarIds.substituirIDs(urlData, urlStations);
+
+        File fileLAMetro = new File("LAMetroTrips.csv");
+        String urlLAMetro = fileLAMetro.getAbsolutePath();
+
+        //2º
+        FiltrarDataBase.filtrarData(urlLAMetro);
+
+        //3º
+        MediaGeral.realizarFiltro(urlLAMetro);
+
+        long tempoFinal = System.currentTimeMillis();
+        double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
+        System.out.println("Transformações duraram: " + tempoExecucaoSegundos + " segundos");
+    }
 
     public static int contarLinhas(String caminhoArquivo) {
         int linhas = 0;
