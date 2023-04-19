@@ -2,25 +2,13 @@ import transformacoes.FiltrarDataBase;
 import transformacoes.MediaGeral;
 import transformacoes.TrocarIds;
 import transformacoes.MergeSort_Duration;
-import transformacoes.InsertionSort_Duration;
 
 import java.io.*;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class CSVReader {
     public static void main(String[] args) {
-        //execTransf();
+        execTransf();
         //mergeSortMedioCaso();
-        insertionSort();
-        //firstTransf("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/dados.csv","C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/src/stations.csv" );
-
-
-    }
-
-    public static void insertionSort(){
-        InsertionSort_Duration insertionSortTeste = new InsertionSort_Duration();
-        insertionSortTeste.insertionSort_Duration_method("C:/Users/tomou/OneDrive/Desktop/ProjetoEstruturaDeDados/CSVProject/LAMetroTrips.csv");
     }
 
     public static void mergeSortMedioCaso(){
@@ -35,7 +23,7 @@ public class CSVReader {
         long tempoInicial = System.currentTimeMillis();
 
         //pegar o caminho dos dois arquivos base
-        File fileData = new File("dados.csv");
+        File fileData = new File("data.csv");
         String urlData = fileData.getAbsolutePath();
 
         File fileStation = new File("stations.csv");
@@ -49,10 +37,10 @@ public class CSVReader {
         String urlLAMetro = fileLAMetro.getAbsolutePath();
 
         //executar segunda transformação
-        secondTransf(urlLAMetro);
+        //secondTransf(urlLAMetro);
 
         //executar terceira transformação
-        MediaGeral.realizarFiltro(urlLAMetro);
+        //MediaGeral.realizarFiltro(urlLAMetro);
 
         //finalizar e mostrar duração da execução
         long tempoFinal = System.currentTimeMillis();
