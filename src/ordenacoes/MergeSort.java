@@ -9,38 +9,18 @@ import java.io.IOException;
 
 public class MergeSort {
 
-    public static void allCasesDuration(String medio){
-        int index = 1;
-        mergeSort_Duration(medio, index);
-    }
-
-    public static void mergeSort_Duration(String url, int index) {
-
-        String arquivoEntrada = url;
-        String arquivoSaida = "LAMetroTrips_duration_mergeSort_medioCaso.csv";
-        FuncoesDeArquivo funcoes = new FuncoesDeArquivo();
-
+    public static void mergeSort(String[][] url, int index, String arquivoSaida) {
         try {
-            BufferedReader leitor = new BufferedReader(new FileReader(arquivoEntrada));
             BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida));
+            mergesort(url, 1, url.length - 1, index); // índice 1 = duration
 
-            String[][] dataBruta = FuncoesDeArquivo.lerCSVNovo(url);
-            int numLinhas = funcoes.contarLinhas(url);
-
-
-            // Ordena o array de dataBruta pelo campo duration usando mergesort
-            mergesort(dataBruta, 1, numLinhas - 1, index); // índice 1 = duration
-
-            // Escreve as dataBruta ordenadas no arquivo de saída
-            for (int i = 0; i < dataBruta.length; i++) {
-                for (int j = 0; j < dataBruta[i].length - 1; j++) {
-                    escritor.write(dataBruta[i][j] + ",");
+            for (int i = 0; i < url.length; i++) {
+                for (int j = 0; j < url[i].length - 1; j++) {
+                    escritor.write(url[i][j] + ",");
                 }
-                escritor.write(dataBruta[i][dataBruta[i].length-1]);
+                escritor.write(url[i][url[i].length-1]);
                 escritor.write(System.lineSeparator());
             }
-
-            leitor.close();
             escritor.close();
 
         } catch (IOException e) {
