@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class MergeSort {
-
     public static void mergeSort(String[][] url, int index, String arquivoSaida) {
         try {
             BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida));
@@ -27,7 +26,24 @@ public class MergeSort {
             System.out.println("Erro ao manipular o arquivo: " + e.getMessage());
         }
     }
+    public static void mergeSortPiorCaso(String[][] url, int index, String arquivoSaida){
+        try {
+            BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida));
+            mergesort(url, 1, url.length - 1, index); // índice 1 = duration
 
+            for (int i = url.length-1; i > 0 ; i--) {
+                for (int j = 0; j < url[i].length - 1; j++) {
+                    escritor.write(url[i][j] + ",");
+                }
+                escritor.write(url[i][url[i].length-1]);
+                escritor.write(System.lineSeparator());
+            }
+            escritor.close();
+
+        } catch (IOException e) {
+            System.out.println("Erro ao manipular o arquivo: " + e.getMessage());
+        }
+    }
     private static void mergesort(String[][] a, int esq, int dir, int coluna) {
         if (esq < dir) {
             int meio = (esq + dir) / 2;
@@ -36,7 +52,6 @@ public class MergeSort {
             merge(a, esq, meio, dir, coluna);
         }
     }
-
     private static void merge(String[][] a, int esq, int meio, int dir, int coluna) {
         String[][] temp = new String[dir - esq + 1][];
         int i = esq, j = meio + 1, k = 0;
