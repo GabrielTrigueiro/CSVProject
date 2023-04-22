@@ -27,6 +27,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-
+teste.csv
 dataBase.csv
 dataStations.csv

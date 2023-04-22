@@ -2,6 +2,7 @@ package transformacoes;
 
 import casos.StDuration;
 import casos.StNameAlfabetic;
+import ordenacoes.HeapSort_Duration;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,16 +21,22 @@ public class FuncoesDeArquivo {
         String urlStations = fileStation.getAbsolutePath();
 
         //1º
-        //TrocarIds.substituirIDs(urlData, urlStations);
+//        TrocarIds.substituirIDs(urlData, urlStations);
+
         File fileLAMetro = new File("LAMetroTrips.csv");
         String urlLAMetro = fileLAMetro.getAbsolutePath();
-        //2º
-        //FiltrarDataBase.filtrarData(urlLAMetro);
-        //3º
-        //MediaGeral.realizarFiltro(urlLAMetro);
-        //StDuration.createData(urlLAMetro);
 
-        StNameAlfabetic.createData();
+        //2º
+//        FiltrarDataBase.filtrarData(urlLAMetro);
+
+        //3º
+//        MediaGeral.realizarFiltro(urlLAMetro);
+
+        //4º
+//        HeapSort_Duration.heapSort_Duration_method(urlLAMetro);
+
+        //5º
+//        StDuration.createData(urlLAMetro);
 
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
@@ -75,4 +82,5 @@ public class FuncoesDeArquivo {
         }
         return dados;
     }
+
 }
