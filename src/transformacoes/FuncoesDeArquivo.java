@@ -3,6 +3,10 @@ package transformacoes;
 import casos.StDuration;
 import casos.StNameAlfabetic;
 import ordenacoes.HeapSort_Duration;
+import ordenacoes.InsertionSort_Duration;
+import ordenacoes.MergeSort_Data;
+import ordenacoes.QSort_Duration;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,7 +15,7 @@ import java.io.IOException;
 
 public class FuncoesDeArquivo {
 
-    public static void execTransf(){
+    public static void execTransf() throws IOException {
 
         long tempoInicial = System.currentTimeMillis();
 
@@ -36,7 +40,16 @@ public class FuncoesDeArquivo {
 //        HeapSort_Duration.heapSort_Duration_method(urlLAMetro);
 
         //5º
-//        StDuration.createData(urlLAMetro);
+        //tDuration.createData(urlLAMetro);
+
+        //6º
+        //InsertionSort_Duration.insertionSort_Duration_method(urlLAMetro);
+
+        //7º
+        //QSort_Duration.quickSortMediana(urlLAMetro);
+
+        //8º
+        //MergeSort_Data.mergeSortData(urlLAMetro);
 
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
