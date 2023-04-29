@@ -9,9 +9,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class StNameAlfabetic {
-    public static void createData(){
+    public static void createData(String url){
 
-        File fileLAMetro = new File("LAMetroTrips.csv");
+        File fileLAMetro = new File(url);
         String urlLAMetro = fileLAMetro.getAbsolutePath();
         String[][] laReaded = FuncoesDeArquivo.lerCSVNovo(urlLAMetro);
 

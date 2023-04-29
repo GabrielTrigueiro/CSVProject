@@ -1,50 +1,30 @@
 package ordenacoes;
 import transformacoes.FuncoesDeArquivo;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import transformacoes.TrocarIds;
+
+import java.io.*;
 
 
 public class HeapSort_Duration  {
-    public static String[][] lerCSVNovo2(String caminhoArquivo) {
+    public static void createData(){
+        File melhor = new File("LAMetroTrips_Duration_MelhorCaso.csv");
+        String urlLAMetroMelhor = melhor.getAbsolutePath();
 
-        String[][] dados = null;
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo));
-            String linha;
-            int linhas = 0;
-            int colunas = 0;
-            while ((linha = br.readLine()) != null) {
-                String[] valores = linha.split(",");
-                if (dados == null) {
-                    colunas = valores.length;
-                    dados = new String[FuncoesDeArquivo.contarLinhas(caminhoArquivo)][colunas];
-                }
-                for (int i = 0; i < valores.length; i++) {
-                    dados[linhas][i] = valores[i];
-                }
-                linhas++;
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return dados;
+        File medio = new File("LAMetroTrips.csv");
+        String urlLAMetroMedio = medio.getAbsolutePath();
+
+        File pior = new File("LAMetroTrips_Duration_PiorCaso.csv");
+        String urlLAMetroPior = pior.getAbsolutePath();
+
+        heapSort_Duration_method(urlLAMetroMelhor, "LAMetroTrips_duration_heapSort_melhorCaso.csv");
+        heapSort_Duration_method(urlLAMetroMedio, "LAMetroTrips_duration_heapSort_medioCaso.csv");
+        heapSort_Duration_method(urlLAMetroPior, "LAMetroTrips_duration_heapSort_piorCaso.csv");
     }
-    public static void heapSort_Duration_method(String url) {
-        String arquivoEntrada = url;
-        String arquivoSaida = "LAMetroTrips_duration_HeapSort_medioCaso.csv";
-
+    public static void heapSort_Duration_method(String url, String saida) {
+        String[][] dataBruta = FuncoesDeArquivo.lerCSVNovo(url);
         try {
-            BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida));
-            String[][] dataBruta = lerCSVNovo2(url);
-
-
+            BufferedWriter escritor = new BufferedWriter(new FileWriter(saida));
             heapSort(dataBruta);
-
-
             escritor.write(dataBruta[dataBruta.length - 1][0]);
             for (int j = 1; j < dataBruta[dataBruta.length - 1].length; j++) {
                 escritor.write("," + dataBruta[dataBruta.length - 1][j]);
@@ -58,16 +38,11 @@ public class HeapSort_Duration  {
                 }
                 escritor.write(System.lineSeparator());
             }
-
             escritor.close();
         } catch (IOException e) {
             System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
         }
     }
-
-
-
-
     public static void heapSort(String[][] data) {
         // Transformar a matriz em um heap
         int n = data.length ;
@@ -81,7 +56,6 @@ public class HeapSort_Duration  {
             heapify(data, i, 0);
         }
     }
-
     private static void heapify(String[][] data, int n, int i) {
 
         int largest = i;
@@ -99,7 +73,6 @@ public class HeapSort_Duration  {
             heapify(data, n, largest);
         }
     }
-
     private static void swap(String[][] data, int i, int j) {
         String[] temp = data[i];
         data[i] = data[j];

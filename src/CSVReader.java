@@ -1,3 +1,4 @@
+import ordenacoes.QuickSort;
 import transformacoes.FuncoesDeArquivo;
 
 import java.io.IOException;

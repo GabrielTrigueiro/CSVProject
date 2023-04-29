@@ -3,10 +3,6 @@ package transformacoes;
 import casos.StDuration;
 import casos.StNameAlfabetic;
 import ordenacoes.HeapSort_Duration;
-import ordenacoes.InsertionSort_Duration;
-import ordenacoes.MergeSort_Data;
-import ordenacoes.QSort_Duration;
-
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,38 +20,22 @@ public class FuncoesDeArquivo {
         File fileStation = new File("stations.csv");
         String urlStations = fileStation.getAbsolutePath();
 
-        //1º
 //        TrocarIds.substituirIDs(urlData, urlStations);
-
         File fileLAMetro = new File("LAMetroTrips.csv");
         String urlLAMetro = fileLAMetro.getAbsolutePath();
 
-        //2º
 //        FiltrarDataBase.filtrarData(urlLAMetro);
-
-        //3º
 //        MediaGeral.realizarFiltro(urlLAMetro);
+//
+//        StDuration.createData(urlLAMetro);
+//        StNameAlfabetic.createData(urlLAMetro);
 
-        //4º
-//        HeapSort_Duration.heapSort_Duration_method(urlLAMetro);
-
-        //5º
-        //tDuration.createData(urlLAMetro);
-
-        //6º
-        //InsertionSort_Duration.insertionSort_Duration_method(urlLAMetro);
-
-        //7º
-        //QSort_Duration.quickSortMediana(urlLAMetro);
-
-        //8º
-        //MergeSort_Data.mergeSortData(urlLAMetro);
+        HeapSort_Duration.createData();
 
         long tempoFinal = System.currentTimeMillis();
         double tempoExecucaoSegundos = (tempoFinal - tempoInicial) / 1000.0;
         System.out.println("Transformações duraram: " + tempoExecucaoSegundos + " segundos");
     }
-
     public static int contarLinhas(String caminhoArquivo) {
         int linhas = 0;
         try {
@@ -69,7 +49,6 @@ public class FuncoesDeArquivo {
         }
         return linhas;
     }
-
     public static String[][] lerCSVNovo(String caminhoArquivo) {
 
         String[][] dados = null;
@@ -95,5 +74,4 @@ public class FuncoesDeArquivo {
         }
         return dados;
     }
-
 }
