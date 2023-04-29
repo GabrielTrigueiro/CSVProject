@@ -9,6 +9,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class StNameAlfabetic {
+
+    public static void createDataAlfa(String url, String saida){
+
+        File fileLAMetro = new File(url);
+        String urlLAMetro = fileLAMetro.getAbsolutePath();
+        String[][] laReaded = FuncoesDeArquivo.lerCSVNovo(urlLAMetro);
+
+       mergeSortMelhorCaso(laReaded, saida);
+
+    }
+
+
     public static void createData(String url){
 
         File fileLAMetro = new File(url);

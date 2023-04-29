@@ -1,13 +1,18 @@
 package ordenacoes;
 import transformacoes.FuncoesDeArquivo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class MergeSort {
+
+    public static void createDataDuration(String url, String saida){
+
+        File fileLAMetro = new File(url);
+        String urlLAMetro = fileLAMetro.getAbsolutePath();
+        String[][] fileReaded = FuncoesDeArquivo.lerCSVNovo(urlLAMetro);
+        mergeSort(fileReaded, 1, saida);
+
+    }
     public static void mergeSort(String[][] url, int index, String arquivoSaida) {
         try {
             BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida));
